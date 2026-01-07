@@ -1,1 +1,5 @@
-spring.application.name=menhir
+spring:
+  application:
+    name: menhir
+  profiles:
+    active: dev

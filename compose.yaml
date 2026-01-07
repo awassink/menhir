@@ -6,4 +6,4 @@ services:
       - 'POSTGRES_PASSWORD=alskdjfioeasoefmca'
       - 'POSTGRES_USER=menhir'
     ports:
-      - '5432'
+      - '5432:5432'

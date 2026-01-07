@@ -1,7 +1,6 @@
 package nl.awassink.menhir.order;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -16,6 +15,8 @@ import java.time.Instant;
 @Table(name = "orders")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String orderIdentifier;
     private String customerName;
