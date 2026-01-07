@@ -1,0 +1,8 @@
+spring:
+  docker:
+    compose:
+      skip:
+        in-tests: false
+logging:
+  level:
+    org.springframework.modulith: DEBUG
