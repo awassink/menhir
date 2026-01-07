@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface InventoryRepository extends CrudRepository<Inventory, Long> {
+interface InventoryRepository extends CrudRepository<Inventory, Long> {
     Optional<Inventory> findInventoryByName(String name);
     List<Inventory> findInventoryByNameIn(Collection<String> names);
 }
