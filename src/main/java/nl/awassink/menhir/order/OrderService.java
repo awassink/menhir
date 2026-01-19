@@ -3,6 +3,7 @@ package nl.awassink.menhir.order;
 import lombok.RequiredArgsConstructor;
 import nl.awassink.menhir.inventory.exposed.InventoryDto;
 import nl.awassink.menhir.inventory.exposed.InventoryService;
+import nl.awassink.menhir.order.exposed.OrderCreatedDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class OrderService {
     private final InventoryService inventoryService;
     private final OrderRepository orderRepository;
     private final OrderInventoryRepository orderInventoryRepository;
+    private final OrderEventService orderEventService;
 
     public OrderResponseDto createOrder(OrderDto orderDto){
 
@@ -39,6 +41,12 @@ public class OrderService {
             orderInventories.add(orderInventory);
         });
         orderInventoryRepository.saveAll(orderInventories);
+
+        Long amount = orderInventories.stream()
+                .map(OrderInventory::getTotalPrice)
+                .reduce(0L, Long::sum);
+        OrderCreatedDto orderCreatedDto = new OrderCreatedDto(order.getId(),amount);
+        orderEventService.orderCreated(orderCreatedDto);
 
         return new OrderResponseDto("Order Currently Processed", 102);
     }
