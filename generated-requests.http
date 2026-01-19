@@ -1,0 +1,25 @@
+###
+POST http://localhost:8080/order
+Content-Type: application/json
+
+{
+  "customerName": "Arjen",
+  "customerEmail": "arjen@test.com",
+  "inventoryRequestDtoList": [
+    {
+      "inventoryName": "pencil",
+      "qty": 6
+    },
+    {
+      "inventoryName": "ruler",
+      "qty": 3
+    },
+    {
+      "inventoryName": "book",
+      "qty": 4
+    }
+  ]
+}
+
+<> 2026-01-19T134141.200.json
+<> 2026-01-19T125923.200.json
